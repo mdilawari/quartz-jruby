@@ -15,7 +15,7 @@ $hoe = Hoe.spec 'quartz-jruby' do
   self.version = Quartz::VERSION
   self.developer 'Vagmi Mudumbai', 'vagmi@artha42.com'
   self.rubyforge_name       = self.name # TODO this is default value
-  self.extra_deps         = [['activesupport','>= 3.0.3']]
+  self.extra_deps         = [['activesupport','>= 2.3.10']]
 
 end
 
