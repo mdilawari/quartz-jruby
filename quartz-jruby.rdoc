@@ -19,15 +19,15 @@ This gem makes these available in a ruby friendly syntax
   <tt>
     class TestScheduler
       include Quartz::Scheduler
-      schedule(:say_hello_5, :every=>5.seconds) { info "every 5 seconds" }
-      schedule(:say_hello_30, :every=>30.seconds) { error "every 30 seconds" }
+      schedule(:say_hello_5, :cron => "0/5 * * * * ? ") { info "every 5 seconds" }
+      schedule(:say_hello_30, :every =>30.seconds) { error "every 30 seconds" }
     end
     TestScheduler.instance.run
   </tt>
 
 == REQUIREMENTS:
 
-* Requires JRuby 1.5.x and ActiveSupport 3.0.3
+* Requires JRuby 1.5.x and ActiveSupport 2.3.10
 
 == INSTALL:
 
