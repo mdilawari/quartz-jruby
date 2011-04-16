@@ -1,5 +1,6 @@
 require 'java'
-import org.quartz.Job
+java_import 'org.quartz.Job'
+
 module Quartz
   class CronJob
     include org.quartz.Job

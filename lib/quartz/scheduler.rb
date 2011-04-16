@@ -1,8 +1,8 @@
 require 'java'
 
 # java quartz imports
-import org.quartz.CronTrigger
-import org.quartz.impl.StdSchedulerFactory
+java_import 'org.quartz.CronTrigger'
+java_import 'org.quartz.impl.StdSchedulerFactory'
 
 
 module Quartz
