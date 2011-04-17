@@ -38,7 +38,9 @@ module Quartz
       def schedule(name, options, block)
         options = defaults.merge options
         job_factory.jobs[name.to_s] = block
-        job_detail = JobDetail.new(name.to_s, "cronjob", CronJob.new(name.to_s))
+        cron_class = (options[:stateful] ? CronStatefulJob : CronJob)
+        puts "cron class: #{cron_class}"
+        job_detail = JobDetail.new(name.to_s, "cronjob", cron_class.new(name.to_s))
         
         cron_expression = options[:cron]
         unless cron_expression

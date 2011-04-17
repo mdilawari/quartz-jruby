@@ -10,7 +10,7 @@ require 'active_support'
 require 'quartz/jars/commons-collections-3.2.1'                                                                                
 require 'quartz/jars/commons-logging'                                                                                          
 require 'quartz/jars/log4j'                                                                                                    
-require 'quartz/jars/quartz-1.6.4'
+require 'quartz/jars/quartz-1.8.5'
 
 require 'quartz/version'
 require 'quartz/job_factory'
