@@ -6,7 +6,7 @@ From [Quartz Scheduler's website](http://www.quartz-scheduler.org/)
 
 Here is a quick [blog post](http://www.artha42.com/blog/scheduling_jobs_with_quartz_jruby) comparing the the Java version to the Ruby Version.
 
-== ocher's notes:
+## ocher's notes:
 
 * Quartz 2.0 support
 * All required JARs included
