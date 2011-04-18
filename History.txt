@@ -1,3 +1,7 @@
+=== 0.2.0 2011-04-18
+
+* Rewrite to Quartz 2.0
+
 === 0.1.0 2010-12-01
 
 * Basic cron ability with java quartz

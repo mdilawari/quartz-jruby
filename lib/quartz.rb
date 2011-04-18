@@ -4,18 +4,13 @@ $:.unshift(File.dirname(__FILE__)) unless
 
 require 'rubygems'
 require 'singleton'
-require 'active_support'
 
 # require jars                                                                                                                 
-require 'quartz/jars/commons-collections-3.2.1'                                                                                
-require 'quartz/jars/commons-logging'                                                                                          
-require 'quartz/jars/log4j'                                                                                                    
-require 'quartz/jars/quartz-1.8.5'
+require 'quartz/jars/slf4j-log4j12-1.6.1'                                                                                
+require 'quartz/jars/slf4j-api-1.6.1'                                                                                          
+require 'quartz/jars/log4j-1.2.14'                                                                                                    
+require 'quartz/jars/quartz-2.0.1'
 
-require 'quartz/version'
-require 'quartz/job_factory'
-require 'quartz/job_detail'
 require 'quartz/cron_job'
-require 'quartz/cronify'
+require 'quartz/job_blocks_container'
 require 'quartz/scheduler'
-

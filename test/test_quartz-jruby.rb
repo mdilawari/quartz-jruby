@@ -1,11 +1,9 @@
 require File.dirname(__FILE__) + '/test_helper.rb'
 
-org.apache.log4j.BasicConfigurator.configure
+# org.apache.log4j.BasicConfigurator.configure
 class TestScheduler
   include Quartz::Scheduler
-  # schedule(:say_hello_5, :cron=>"0/5 * * * * ?") { info "every 5 seconds" }
-  schedule(:say_hello_statefull, :every => 5.seconds, :stateful => true) { info "every 5 sec. statefull"; sleep(17) ; info "after sleep"}
-  # schedule(:say_hello_30, :every=>30.seconds) { error "every 30 seconds" }
-  # schedule(:say_hello_at, :every=>1.day, :at=>'15:06:00') { info "fire at 3:05 pm" }
+  schedule(:say_hello_2_dis, :cron => "0/2 * * * * ?", :disallow_concurrent => true) { puts "every 2 seconds"; sleep(8) ; puts 'after sleep' }
+  schedule(:say_hello_2, :cron => "0/2 * * * * ?") { puts "every 2 seconds (no dis)"; sleep(5) }
 end
 TestScheduler.instance.run
