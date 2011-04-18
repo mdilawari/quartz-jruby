@@ -1,14 +1,10 @@
-= Quartz JRuby
+## Quartz for JRuby
 
-* http://github.com/ocher/quartz-jruby
+From [Quartz Scheduler's website](http://www.quartz-scheduler.org/)
 
-== DESCRIPTION:
+> Quartz is a full-featured, open source job scheduling service that can be integrated with, or used along side virtually any Java EE or Java SE application - from the smallest stand-alone application to the largest e-commerce system. Quartz can be used to create simple or complex schedules for executing tens, hundreds, or even tens-of-thousands of jobs; jobs whose tasks are defined as standard Java components that may executed virtually anything you may program them to do. The Quartz Scheduler includes many enterprise-class features, such as JTA transactions and clustering.
 
-From {Quartz Scheduler's website}[http://www.quartz-scheduler.org/]
-
-Quartz is a full-featured, open source job scheduling service that can be integrated with, or used along side virtually any Java EE or Java SE application - from the smallest stand-alone application to the largest e-commerce system. Quartz can be used to create simple or complex schedules for executing tens, hundreds, or even tens-of-thousands of jobs; jobs whose tasks are defined as standard Java components that may executed virtually anything you may program them to do. The Quartz Scheduler includes many enterprise-class features, such as JTA transactions and clustering.
-
-This gem makes these available in a ruby friendly syntax
+Here is a quick [blog post](http://www.artha42.com/blog/scheduling_jobs_with_quartz_jruby) comparing the the Java version to the Ruby Version.
 
 == ocher's notes:
 
@@ -17,28 +13,23 @@ This gem makes these available in a ruby friendly syntax
 * This version doesn't support :at and :every options. Only :cron option is supported
 * Support for Jobs with DisallowConcurrentExecution annotation set (pass :disallow_concurrent => true to schedule method)
 
-== SYNOPSIS:
+## Usage
 
-  <tt>
-    class TestScheduler
-      include Quartz::Scheduler
-      schedule(:say_hello_5, :cron => "0/5 * * * * ? ") { puts "every 5 seconds" }
-      schedule(:say_hello_5_dc, :cron => "0/5 * * * * ? ", :disallow_concurrent => true) { puts "every 5 seconds"; sleep(8) }
-    end
-    TestScheduler.instance.run
-  </tt>
+Install with
 
-== REQUIREMENTS:
+        $ gem install quartz-jruby
 
-* Requires JRuby (tested on 1.6.0)
+Example code
 
-== INSTALL:
+        require 'quartz'
+        class TestScheduler
+          include Quartz::Scheduler
+          schedule(:say_hello_5, :cron => "0/5 * * * * ? ") { puts "every 5 seconds" }
+          schedule(:say_hello_5_dc, :cron => "0/5 * * * * ? ", :disallow_concurrent => true) { puts "every 5 seconds"; sleep(8) }
+        end
+        TestScheduler.instance.run
 
-* gem install quartz-jruby
-
-== LICENSE:
-
-(The MIT License)
+## License
 
 Copyright (c) 2010, Vagmi Mudumbai
 
@@ -60,3 +51,4 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
