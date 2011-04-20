@@ -10,7 +10,7 @@ Here is a quick [blog post](http://www.artha42.com/blog/scheduling_jobs_with_qua
 
 * Quartz 2.0 support
 * All required JARs included
-* This version doesn't support :at and :every options. Only :cron option is supported
+* This version doesn't support :at option. :cron and :every options are supported
 * Support for Jobs with DisallowConcurrentExecution annotation set (pass :disallow_concurrent => true to schedule method)
 
 ## Usage
@@ -24,7 +24,7 @@ Example code
         require 'quartz'
         class TestScheduler
           include Quartz::Scheduler
-          schedule(:say_hello_5, :cron => "0/5 * * * * ? ") { puts "every 5 seconds" }
+          schedule(:say_hello_5, :every => 5) { puts "every 5 seconds" }
           schedule(:say_hello_5_dc, :cron => "0/5 * * * * ? ", :disallow_concurrent => true) { puts "every 5 seconds"; sleep(8) }
         end
         TestScheduler.instance.run

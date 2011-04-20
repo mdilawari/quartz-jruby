@@ -1,6 +1,7 @@
 java_import 'org.quartz.JobBuilder'
 java_import 'org.quartz.TriggerBuilder'
 java_import 'org.quartz.impl.StdSchedulerFactory'
+java_import 'org.quartz.SimpleScheduleBuilder'
 java_import 'org.quartz.CronScheduleBuilder'
 
 module Quartz
@@ -24,9 +25,17 @@ module Quartz
         job_code_blocks.jobs[name.to_s] = block
         
         job_class = (options[:disallow_concurrent] ? Quartz::CronJobSingle : Quartz::CronJob)
-        job = JobBuilder.new_job(job_class.java_class).with_identity("#{name}", "group").build                                                                                                                       
+        job = JobBuilder.new_job(job_class.java_class).with_identity("#{name}", "group").build  
+        
+        if options[:cron]
+          trigger_schedule = CronScheduleBuilder.cron_schedule(options[:cron])
+        else
+          trigger_schedule = SimpleScheduleBuilder.simple_schedule.
+                          with_interval_in_seconds(options[:every]).repeat_forever
+        end
+                                                                                                                             
         trigger = TriggerBuilder.new_trigger.with_identity("#{name}_trigger", "group").
-                          withSchedule(CronScheduleBuilder.cronSchedule(options[:cron])).build
+                          with_schedule(trigger_schedule).build
                       
         scheduler.schedule_job(job, trigger)                                                                                           
       end
