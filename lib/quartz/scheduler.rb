@@ -41,11 +41,11 @@ module Quartz
       end
   
       def scheduler_factory
-        @scheduler_factor ||= StdSchedulerFactory.new
+        @scheduler_factory ||= StdSchedulerFactory.new
       end
   
       def scheduler
-        scheduler_factory.get_scheduler
+        @scheduler ||= scheduler_factory.get_scheduler
       end
   
       def job_code_blocks
