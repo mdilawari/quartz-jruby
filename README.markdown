@@ -12,6 +12,7 @@ Here is a quick [blog post](http://www.artha42.com/blog/scheduling_jobs_with_qua
 * All required JARs included
 * This version doesn't support :at option. :cron and :every options are supported
 * Support for Jobs with DisallowConcurrentExecution annotation set (pass :disallow_concurrent => true to schedule method)
+* Support for interrupting jobs (example in the test file)
 
 ## Usage
 
