@@ -29,7 +29,11 @@ module Quartz
   end
   
   class CronJobSingle < CronJob
-    add_class_annotation({ DisallowConcurrentExecution => {} }) 
+    if JRUBY_VERSION >= '1.7.0'
+      add_class_annotations({ DisallowConcurrentExecution => {} })
+    else
+      add_class_annotation({ DisallowConcurrentExecution => {} })
+    end
   end
   
   CronJob.become_java!
