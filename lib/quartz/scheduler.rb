@@ -58,6 +58,7 @@ module Quartz
       end
       
       def interrupt
+        puts "Quartz - interrupt"
         scheduler.standby                                      # don't trigger new jobs        
         puts "Quartz - standby invoked"
         scheduler.getCurrentlyExecutingJobs.each do |job_context|
