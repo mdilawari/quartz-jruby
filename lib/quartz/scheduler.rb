@@ -64,6 +64,10 @@ module Quartz
         end        
       end
       
+      def standby
+        scheduler.standby                                      # don't trigger new jobs 
+      end
+      
       def stop
         interrupt
         scheduler.shutdown(true)
